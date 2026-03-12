@@ -23,6 +23,6 @@ I've been trying to set up SIEM/managment/logging for my home "lab" to manage an
 * Biggest resource hog was Salt, which is notable when you're running Elastic
 * Absolutely no ARM support (fatal flaw)
 
-I found ChiefGyk3d/siem-docker-stack, which looked perfect until I tried to get it running.  It's vibe coded and doesn't seem to actually work.  I'll probably use parts from that here, so he deserves some credit at least.
+I found ChiefGyk3d/siem-docker-stack, which looked perfect until I tried to get it running.  It's vibe coded and doesn't seem to actually work.  I'll probably use parts from that here, so they deserve some credit at least.
 
 So, I'm making my own.  That's got to be easier than just using a product built by a team of professionals, right?
