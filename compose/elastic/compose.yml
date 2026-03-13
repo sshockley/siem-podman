@@ -91,7 +91,6 @@ services:
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.license.self_generated.type=${LICENSE}
       - xpack.ml.use_auto_machine_memory_percent=true
-      - xpack.encryptedSavedObjects.encryptionKey=${ENCRYPTIONKEY}
     mem_limit: ${MEM_LIMIT}
     ulimits:
       memlock:
@@ -209,6 +208,7 @@ services:
       - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
       - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+      - xpack.encryptedSavedObjects.encryptionKey=${ENCRYPTIONKEY}
     mem_limit: ${MEM_LIMIT}
     healthcheck:
       test:
