@@ -91,7 +91,13 @@ services:
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.license.self_generated.type=${LICENSE}
       - xpack.ml.use_auto_machine_memory_percent=true
-    mem_limit: ${MEM_LIMIT}
+    deploy:
+      resources:
+        limits:
+          memory: ${ES_MEM_LIMIT}
+        reservations:
+          memory: ${ES_MEM_RESV}
+    #mem_limit: ${MEM_LIMIT}
     ulimits:
       memlock:
         soft: -1
@@ -132,7 +138,13 @@ services:
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.license.self_generated.type=${LICENSE}
       - xpack.ml.use_auto_machine_memory_percent=true
-    mem_limit: ${MEM_LIMIT}
+    deploy:
+      resources:
+        limits:
+          memory: ${ES_MEM_LIMIT}
+        reservations:
+          memory: ${ES_MEM_RESV}
+    #mem_limit: ${MEM_LIMIT}
     ulimits:
       memlock:
         soft: -1
@@ -173,7 +185,13 @@ services:
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.license.self_generated.type=${LICENSE}
       - xpack.ml.use_auto_machine_memory_percent=true
-    mem_limit: ${MEM_LIMIT}
+    deploy:
+      resources:
+        limits:
+          memory: ${ES_MEM_LIMIT}
+        reservations:
+          memory: ${ES_MEM_RESV}
+    #mem_limit: ${MEM_LIMIT}
     ulimits:
       memlock:
         soft: -1
@@ -211,7 +229,13 @@ services:
       - xpack.encryptedSavedObjects.encryptionKey=${SAVED_OBJECTS_ENCRYPTIONKEY}
       - xpack.security.encryptionKey=${SECURITY_ENCRYPTIONKEY}
       - xpack.reporting.encryptionKey=${REPORTING_ENCRYPTIONKEY}
-    mem_limit: ${MEM_LIMIT}
+    deploy:
+      resources:
+        limits:
+          memory: ${KIBANA_MEM_LIMIT}
+        reservations:
+          memory: ${KIBANA_MEM_RESV}
+    #mem_limit: ${MEM_LIMIT}
     healthcheck:
       test:
         [
