@@ -95,9 +95,10 @@ services:
       resources:
         limits:
           memory: ${ES_MEM_LIMIT}
+          cpus: ${ES_CPU_LIMIT}
         reservations:
           memory: ${ES_MEM_RESV}
-    #mem_limit: ${MEM_LIMIT}
+          cpus: ${ES_CPU_RESV}
     ulimits:
       memlock:
         soft: -1
@@ -142,9 +143,10 @@ services:
       resources:
         limits:
           memory: ${ES_MEM_LIMIT}
+          cpus: ${ES_CPU_LIMIT}
         reservations:
           memory: ${ES_MEM_RESV}
-    #mem_limit: ${MEM_LIMIT}
+          cpus: ${ES_CPU_RESV}
     ulimits:
       memlock:
         soft: -1
@@ -189,9 +191,10 @@ services:
       resources:
         limits:
           memory: ${ES_MEM_LIMIT}
+          cpus: ${ES_CPU_LIMIT}
         reservations:
           memory: ${ES_MEM_RESV}
-    #mem_limit: ${MEM_LIMIT}
+          cpus: ${ES_CPU_RESV}
     ulimits:
       memlock:
         soft: -1
@@ -233,9 +236,10 @@ services:
       resources:
         limits:
           memory: ${KIBANA_MEM_LIMIT}
+          cpus: ${KIBANA_CPU_LIMIT}
         reservations:
           memory: ${KIBANA_MEM_RESV}
-    #mem_limit: ${MEM_LIMIT}
+          cpus: ${KIBANA_CPU_RESV}
     healthcheck:
       test:
         [
