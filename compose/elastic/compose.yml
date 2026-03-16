@@ -47,7 +47,7 @@ services:
           unzip config/certs/certs.zip -d config/certs;
         fi;
         echo "Setting file permissions"
-        chown -R root:1000 config/certs;
+        chown -R 1000:1000 config/certs;
         find . -type d -exec chmod 777 \{\} \;;
         find . -type f -exec chmod 666 \{\} \;;
         echo "Waiting for Elasticsearch availability";
