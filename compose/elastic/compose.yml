@@ -4,7 +4,7 @@ services:
   setup:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes:
-      - ./certs:/usr/share/elasticsearch/config/certs:Z
+      - ./certs:/usr/share/elasticsearch/config/certs:z
     user: "0"
     command: >
       bash -c '
@@ -68,7 +68,7 @@ services:
         condition: service_healthy
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes:
-      - ./certs:/usr/share/elasticsearch/config/certs:Z
+      - ./certs:/usr/share/elasticsearch/config/certs:z
       - ./esdata01:/usr/share/elasticsearch/data:z
     ports:
       - ${ES_PORT}:9200
@@ -118,7 +118,7 @@ services:
       - es01
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes:
-      - ././certs:/usr/share/elasticsearch/config/certs:Z
+      - ././certs:/usr/share/elasticsearch/config/certs:z
       - ./esdata02:/usr/share/elasticsearch/data:z
     environment:
       - node.name=es02
@@ -166,7 +166,7 @@ services:
       - es02
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes:
-      - ./certs:/usr/share/elasticsearch/config/certs:Z
+      - ./certs:/usr/share/elasticsearch/config/certs:z
       - ./esdata03:/usr/share/elasticsearch/data:z
     environment:
       - node.name=es03
@@ -219,7 +219,7 @@ services:
         condition: service_healthy
     image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
     volumes:
-      - ./certs:/usr/share/kibana/config/certs:Z
+      - ./certs:/usr/share/kibana/config/certs:z
       - ./kibanadata:/usr/share/kibana/data:z
     ports:
       - ${KIBANA_PORT}:5601
