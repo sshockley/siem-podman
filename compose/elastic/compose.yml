@@ -251,6 +251,9 @@ services:
       retries: 120
 
   nginx:
+    depends_on:
+      kibana:
+        condition: service_healthy
     image: nginx:latest-alpine
     restart: unless-stopped
     volumes:
