@@ -254,7 +254,7 @@ services:
     depends_on:
       kibana:
         condition: service_healthy
-    image: nginx:latest-alpine
+    image: nginx:stable-alpine-slim
     restart: unless-stopped
     volumes:
       - ./nginx/conf:/etc/nginx/conf:Z,ro
