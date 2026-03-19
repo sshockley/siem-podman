@@ -70,8 +70,8 @@ services:
     volumes:
       - ./certs:/usr/share/elasticsearch/config/certs:z
       - ./esdata01:/usr/share/elasticsearch/data:z
-    ports:
-      - ${ES_PORT}:9200
+    # ports:
+    #   - ${ES_PORT}:9200
     environment:
       - node.name=es01
       - cluster.name=${CLUSTER_NAME}
@@ -250,14 +250,33 @@ services:
       timeout: 10s
       retries: 120
 
-# volumes:
-#   certs:
-#     driver: local
-#   esdata01:
-#     driver: local
-#   esdata02:
-#     driver: local
-#   esdata03:
-#     driver: local
-#   kibanadata:
-#     driver: local
+  nginx:
+    image: nginx:latest-alpine
+    restart: unless-stopped
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf:Z,ro
+      - ./nginx/log:/var/log:z
+      - ./nginx/certs:/certs:z,ro
+    ports:
+      - 80:80
+      - 443:443
+      - ${ES_PORT}:9200
+    environment:
+      - SERVER_NAME=${SERVER_NAME}
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl --fail http://localhost/ || exit 1",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 120
+    deploy:
+      resources:
+        limits:
+          memory: ${NGINX_MEM_LIMIT}
+          cpus: ${NGINX_CPU_LIMIT}
+        reservations:
+          memory: ${NGINX_MEM_RESV}
+          cpus: ${NGINX_CPU_RESV}
