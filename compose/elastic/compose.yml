@@ -258,7 +258,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx/conf:/etc/nginx/conf:Z,ro
-      - ./nginx/log:/var/log:z
+      - ./nginx/log:/var/log/nginx:z
       - ./nginx/certs:/certs:z,ro
     ports:
       - 80:80
