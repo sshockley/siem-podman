@@ -269,7 +269,7 @@ services:
       - elastic
     restart: unless-stopped
     volumes:
-      - ./nginx/conf:/etc/nginx/conf:Z,ro
+      - ./nginx/conf:/etc/nginx/conf.d:Z,ro
       - ./nginx/log:/var/log/nginx:z
       - ./nginx/certs:/certs:z,ro
     ports:
