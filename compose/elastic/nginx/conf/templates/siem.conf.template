@@ -58,7 +58,7 @@ server {
 server {
     server_name ${SERVER_NAME};
     listen 9200 ssl;
-    #listen [::] 443; # quic reuseport;
+    listen [::] 9200 ssl;
     http2 on;
 
     ssl_certificate /certs/fullchain.pem;
