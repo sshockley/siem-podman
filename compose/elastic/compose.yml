@@ -270,7 +270,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf:Z,ro
-      - ./nginx/conf/conf.d:/etc/nginx/conf.d:Z,ro
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d:Z
+      - ./nginx/conf/templates:/etc/nginx/templates:Z,ro
       - ./nginx/log:/var/log/nginx:z
       - ./nginx/certs:/certs:z,ro
     ports:
