@@ -75,3 +75,24 @@ server {
         proxy_pass https://es01:9200;
     }
 }
+
+server {
+    server_name ${SERVER_NAME};
+    listen 8220 ssl;
+    listen [::]:8220 ssl;
+    http2 on;
+
+    ssl_certificate /certs/fullchain.pem;
+    ssl_certificate_key /certs/privkey.pem;
+    ssl_trusted_certificate /certs/chain.pem;
+
+    # Set headers
+    proxy_set_header Host              $host;
+    proxy_set_header X-Real-IP         $remote_addr;
+    proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+
+    location / {
+        proxy_pass https://es01:8220;
+    }
+}
