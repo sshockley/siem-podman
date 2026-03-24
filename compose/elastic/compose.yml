@@ -266,6 +266,8 @@ services:
         condition: service_healthy
       kibana:
         condition: service_healthy
+      fleet:
+        condition: service_healthy
     container_name: fleet
     image: docker.elastic.co/elastic-agent/elastic-agent:${STACK_VERSION}
     networks:
