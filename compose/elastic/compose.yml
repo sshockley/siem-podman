@@ -280,8 +280,8 @@ services:
     volumes:
       - ./certs:/usr/share/elastic-agent/config/certs:z
       - ./fleetdata:/usr/share/fleet/data:z
-    #ports:
-    #  - ${FLEET_PORT}:8220
+    ports:
+      - ${FLEET_PORT}:8220
     restart: on-failure
     environment:
       - FLEET_SERVER_ENABLE=true
@@ -298,10 +298,10 @@ services:
       # - FLEET_SERVER_POLICY_ID=fleet-server-policy
       - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${SAVED_OBJECTS_ENCRYPTIONKEY}
 
-      # - KIBANA_FLEET_SETUP=1
-      # - KIBANA_FLEET_HOST=http://kibana:5601
-      # - KIBANA_USERNAME=elastic
-      # - KIBANA_PASSWORD=${ELASTIC_PASSWORD}
+      - KIBANA_FLEET_SETUP=1
+      - KIBANA_FLEET_HOST=http://kibana:5601
+      - KIBANA_USERNAME=elastic
+      - KIBANA_PASSWORD=${ELASTIC_PASSWORD}
 
       - ELASTICSEARCH_HOST=https://es01:9200
       - ELASTICSEARCH_USERNAME=elastic
