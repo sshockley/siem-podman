@@ -346,7 +346,7 @@ services:
       - 80:80
       - 443:443
       - ${ES_PORT}:9200
-      - ${FLEET_PORT}:8220
+      #- ${FLEET_PORT}:8220
     environment:
       - SERVER_NAME=${SERVER_NAME}
     healthcheck:
