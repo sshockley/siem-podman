@@ -6,8 +6,8 @@ services:
     #   kibana:
     #     condition: service_healthy
     container_name: fleet
-    image: docker.elastic.co/elastic-agent/elastic-agent:${STACK_VERSION}
-    #image: docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:${STACK_VERSION}
+    #image: docker.elastic.co/elastic-agent/elastic-agent:${STACK_VERSION}
+    image: docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:${STACK_VERSION}
     networks:
       - elastic
     volumes:
@@ -36,7 +36,9 @@ services:
       - KIBANA_USERNAME=elastic
       - KIBANA_PASSWORD=${ELASTIC_PASSWORD}
 
+      - ELASTICSEARCH_HOSTS=https://es01:9200
       - ELASTICSEARCH_HOST=https://es01:9200
+
       - ELASTICSEARCH_USERNAME=elastic
       - ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
       - ELASTICSEARCH_CA=/usr/share/elastic-agent/config/certs/ca/ca.crt
