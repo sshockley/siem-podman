@@ -33,8 +33,10 @@ services:
     networks:
       - elastic
     depends_on:
-      - elasticsearch
-      - kibana
+      - elasticsearch:
+        condition: service_healthy
+      - kibana:
+        condition: service_healthy
       - fleet-server
 
 # volumes:
