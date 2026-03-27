@@ -10,10 +10,6 @@
 
 services:
   apm-server:
-    build:
-      context: extensions/fleet/
-      args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
     volumes:
       - ./apm-server:/usr/share/elastic-agent/state:Z
     environment:
