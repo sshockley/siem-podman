@@ -34,10 +34,10 @@ services:
     restart: on-failure
     networks:
       - elastic
-    # depends_on:
-    #   - elasticsearch
-    #   - kibana
-    #   - fleet-server
+    depends_on:
+      - elasticsearch
+      - kibana
+      - fleet-server
 
 # volumes:
 #   apm-server:

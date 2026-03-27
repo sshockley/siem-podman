@@ -41,9 +41,9 @@ services:
     restart: on-failure
     networks:
       - elastic
-    # depends_on:
-    #   - elasticsearch
-    #   - kibana
+    depends_on:
+      - elasticsearch
+      - kibana
 
 # volumes:
 #   fleet-server:
