@@ -57,3 +57,10 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
+
+networks:
+  elastic:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 100.64.0.0/24
