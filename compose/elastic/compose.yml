@@ -2,6 +2,7 @@
 
 services:
   setup:
+    container_name: setup
     image: docker.elastic.co/elasticsearch/elasticsearch-wolfi:${STACK_VERSION}
     networks:
       - elastic
@@ -71,6 +72,7 @@ services:
       retries: 120
 
   elasticsearch:
+    container_name: elasticsearch
     depends_on:
       setup:
         condition: service_healthy
@@ -226,6 +228,7 @@ services:
   #     retries: 120
 
   kibana:
+    container_name: kibana
     depends_on:
       elasticsearch:
         condition: service_healthy
@@ -330,6 +333,7 @@ services:
     #   retries: 120
 
   nginx:
+    container_name: nginx
     depends_on:
       kibana:
         condition: service_healthy
