@@ -85,9 +85,10 @@ services:
     environment:
       - node.name=elasticsearch
       - cluster.name=${CLUSTER_NAME}
-      - cluster.initial_master_nodes=elasticsearch
+      #- cluster.initial_master_nodes=elasticsearch
       #- cluster.initial_master_nodes=es01,es02,es03
       #- discovery.seed_hosts=es02,es03
+      - discovery.type=single-node
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - bootstrap.memory_lock=true
       - xpack.security.enabled=true
@@ -242,9 +243,10 @@ services:
       - ${KIBANA_PORT}:5601
     environment:
       - SERVERNAME=kibana
-      - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
-      - ELASTICSEARCH_USERNAME=kibana_system
-      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+      - KIBANA_SYSTEM_PASSWORD=${KIBANA_SYSTEM_PASSWORD}
+      # - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
+      # - ELASTICSEARCH_USERNAME=kibana_system
+      # - ELASTICSEARCH_PASSWORD=${KIBANA_SYSTEM_PASSWORD}
       - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
       - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${SAVED_OBJECTS_ENCRYPTIONKEY}
       - XPACK_SECURITY_ENCRYPTIONKEY=${SECURITY_ENCRYPTIONKEY}
