@@ -1,10 +1,10 @@
 services:
   fleet:
-    depends_on:
-      es01:
-        condition: service_healthy
-      kibana:
-        condition: service_healthy
+    # depends_on:
+    #   es01:
+    #     condition: service_healthy
+    #   kibana:
+    #     condition: service_healthy
     container_name: fleet
     image: docker.elastic.co/elastic-agent/elastic-agent:${STACK_VERSION}
     #image: docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:${STACK_VERSION}
