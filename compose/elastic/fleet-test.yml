@@ -40,9 +40,9 @@ services:
     networks:
       - elastic
     depends_on:
-      - elasticsearch:
+      elasticsearch:
         condition: service_healthy
-      - kibana:
+      kibana:
         condition: service_healthy
 
 # volumes:
