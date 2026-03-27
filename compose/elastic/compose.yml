@@ -85,6 +85,7 @@ services:
     environment:
       - node.name=elasticsearch
       - cluster.name=${CLUSTER_NAME}
+      - cluster.initial_master_nodes=elasticsearch
       #- cluster.initial_master_nodes=es01,es02,es03
       #- discovery.seed_hosts=es02,es03
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
