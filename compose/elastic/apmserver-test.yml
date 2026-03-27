@@ -10,6 +10,7 @@
 
 services:
   apm-server:
+    image: docker.elastic.co/apm/apm-server-wolfi:${STACK_VERSION}
     volumes:
       - ./apm-server:/usr/share/elastic-agent/state:Z
     environment:
