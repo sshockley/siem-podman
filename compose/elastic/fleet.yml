@@ -13,8 +13,8 @@ services:
     volumes:
       - ./certs:/usr/share/elastic-agent/config/certs:z
       - ./fleetdata:/usr/share/fleet/data:z
-    ports:
-      - ${FLEET_PORT}:8220
+    # ports:
+    #   - ${FLEET_PORT}:8220
     restart: on-failure
     environment:
       - FLEET_SERVER_ENABLE=true
