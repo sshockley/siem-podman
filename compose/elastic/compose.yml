@@ -45,6 +45,12 @@ services:
           "      - localhost\n"\
           "    ip:\n"\
           "      - 127.0.0.1\n"\
+          "  - name: kibana\n"\
+          "    dns:\n"\
+          "      - kibana\n"\
+          "      - localhost\n"\
+          "    ip:\n"\
+          "      - 127.0.0.1\n"\
           "  - name: fleet\n"\
           "    dns:\n"\
           "      - fleet\n"\
@@ -250,7 +256,12 @@ services:
       - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
       - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${KIBANA_SYSTEM_PASSWORD}
-      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+
+      - SERVER_SSL_ENABLED=true
+      - SERVER_SSL_KEY=/usr/share/kibana/config/certs/elasticsearch/elasticsearch.key
+      - SERVER_SSL_CERTIFICATE=/usr/share/kibana/config/certs/elasticsearch/elasticsearch.crt
+
+      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=/usr/share/kibana/config/certs/ca/ca.crt
       - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${SAVED_OBJECTS_ENCRYPTIONKEY}
       - XPACK_SECURITY_ENCRYPTIONKEY=${SECURITY_ENCRYPTIONKEY}
       - XPACK_REPORTING_ENCRYPTIONKEY=${REPORTING_ENCRYPTIONKEY}
@@ -266,7 +277,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl -s -I http://localhost:5601 | grep -q 'HTTP/1.1 302 Found'",
+          "curl --cacert /usr/share/kibana/config/certs/ca/ca.crt -s -I https://localhost:5601 | grep -q 'HTTP/1.1 302 Found'",
         ]
       interval: 10s
       timeout: 10s
