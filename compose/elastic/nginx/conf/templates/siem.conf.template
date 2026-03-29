@@ -72,7 +72,7 @@ server {
     proxy_set_header X-Forwarded-Proto $scheme;
 
     location / {
-        proxy_pass https://es01:9200;
+        proxy_pass https://elasticsearch:9200;
     }
 }
 
@@ -93,6 +93,6 @@ server {
 #     proxy_set_header X-Forwarded-Proto $scheme;
 
 #     location / {
-#         proxy_pass https://es01:8220;
+#         proxy_pass https://elasticsearch:8220;
 #     }
 # }
