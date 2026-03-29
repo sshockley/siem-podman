@@ -4,7 +4,21 @@
         "weakpass",
         "weakerpass",
         "RESV",
-        "ENCRYPTIONKEY"
+        "ENCRYPTIONKEY",
+        "wolfi",
+        "healthcheck",
+        "cpus",
+        "ulimits",
+        "memlock",
+        "xpack",
+        "esdata",
+        "certutil",
+        "elif",
+        "kibanadata",
+        "CERTIFICATEAUTHORITIES",
+        "ENCRYPTEDSAVEDOBJECTS",
+        "fleetdata",
+        "apmserver"
 
     ]
 }
