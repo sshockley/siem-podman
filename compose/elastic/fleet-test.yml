@@ -54,6 +54,20 @@ services:
         condition: service_healthy
       kibana:
         condition: service_healthy
-
-# volumes:
-#   fleet-server:
+    deploy:
+      resources:
+        limits:
+          memory: ${FLEET_MEM_LIMIT}
+          cpus: ${FLEET_CPU_LIMIT}
+        reservations:
+          memory: ${FLEET_MEM_RESV}
+          cpus: ${FLEET_CPU_RESV}
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -s -I http://localhost:5601 | grep -q 'HTTP/1.1 302 Found'",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 120
