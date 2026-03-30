@@ -18,7 +18,8 @@
         "CERTIFICATEAUTHORITIES",
         "ENCRYPTEDSAVEDOBJECTS",
         "fleetdata",
-        "apmserver"
+        "apmserver",
+        "PUBLICBASEURL"
 
     ]
 }
