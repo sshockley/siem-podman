@@ -25,6 +25,8 @@ services:
       FLEET_SERVER_CERT: /usr/share/elastic-agent/config/certs/fleet-server/fleet-server.crt
       FLEET_SERVER_CERT_KEY: /usr/share/elastic-agent/config/certs/fleet-server/fleet-server.key
       FLEET_CA: /usr/share/elastic-agent/config/certs/ca/ca.crt
+      ELASTICSEARCH_CA: /usr/share/elastic-agent/config/certs/ca/ca.crt
+      KIBANA_CA: /usr/share/elastic-agent/config/certs/ca/ca.crt
       FLEET_SERVER_ENABLE: '1'
       #FLEET_SERVER_INSECURE_HTTP: '1'
       #FLEET_SERVER_HOST: 0.0.0.0
