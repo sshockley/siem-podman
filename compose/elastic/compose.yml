@@ -146,6 +146,7 @@ services:
       - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
       - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${KIBANA_SYSTEM_PASSWORD}
+      - ELASTICSEARCH_PUBLICBASEURL=https://${SERVER_NAME}:${ES_PORT}
 
       - SERVER_SSL_ENABLED=true
       - SERVER_SSL_KEY=/usr/share/kibana/config/certs/kibana/kibana.key
@@ -190,7 +191,7 @@ services:
       - 80:80
       - 443:443
       - ${ES_PORT}:9200
-      #- ${FLEET_PORT}:8220
+      - ${FLEET_PORT}:8220
     environment:
       - SERVER_NAME=${SERVER_NAME}
     healthcheck:

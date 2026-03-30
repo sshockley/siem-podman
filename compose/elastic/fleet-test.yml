@@ -4,10 +4,7 @@ services:
     image: docker.elastic.co/elastic-agent/elastic-agent-complete-wolfi:${STACK_VERSION}
     # Run as 'root' instead of 'elastic-agent' (uid 1000) to allow reading
     # 'docker.sock' and the host's filesystem.
-    user: root
-    # volumes:
-    #   - ./certs:/usr/share/elastic-agent/config/certs:z
-    #   - ./fleetdata:/usr/share/fleet/data:z
+    #user: root
     volumes:
       - ./certs:/usr/share/elastic-agent/config/certs:z
       - ./fleetdata:/usr/share/elastic-agent/state:Z
@@ -15,10 +12,10 @@ services:
       #   source: /var/lib/docker/containers
       #   target: /var/lib/docker/containers
       #   read_only: true
-      - type: bind
-        source: /var/run/docker.sock
-        target: /var/run/docker.sock
-        read_only: true
+      # - type: bind
+      #   source: /var/run/docker.sock
+      #   target: /var/run/docker.sock
+      #   read_only: true
     environment:
       FLEET_SERVER_ELASTICSEARCH_HOST: https://elasticsearch:9200
       ELASTICSEARCH_HOST: https://elasticsearch:9200
@@ -46,8 +43,8 @@ services:
       ELASTICSEARCH_PASSWORD: ${ELASTIC_PASSWORD:-}
       # (b) Enroll using a pre-generated service token
       #FLEET_SERVER_SERVICE_TOKEN: <service_token>
-    ports:
-      - 8220:8220
+    # ports:
+    #   - 8220:8220
     hostname: fleet-server
     # Elastic Agent does not retry failed connections to Kibana upon the initial enrollment phase.
     restart: on-failure
