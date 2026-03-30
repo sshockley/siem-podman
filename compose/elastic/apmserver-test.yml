@@ -13,12 +13,13 @@ services:
     container_name: apm-server
     image: docker.elastic.co/apm/apm-server-wolfi:${STACK_VERSION}
     volumes:
-      - ./apm-server:/usr/share/elastic-agent/state:Z
+      - ./apm-server:/usr/share/apm-server/state:Z
+      - ./certs:/usr/share/apm-server/config/certs:z
     environment:
       FLEET_ENROLL: '1'
       FLEET_TOKEN_POLICY_NAME: Agent Policy APM Server
       FLEET_INSECURE: '1'
-      FLEET_URL: http://fleet-server:8220
+      FLEET_URL: https://fleet-server:8220
       # Enrollment.
       # (a) Auto-enroll using basic authentication
       ELASTICSEARCH_USERNAME: elastic
@@ -39,6 +40,20 @@ services:
         condition: service_healthy
       fleet-server:
         condition: service_started
-
-# volumes:
-#   apm-server:
+    deploy:
+      resources:
+        limits:
+          memory: ${APM_MEM_LIMIT}
+          cpus: ${APM_CPU_LIMIT}
+        reservations:
+          memory: ${APM_MEM_RESV}
+          cpus: ${APM_CPU_RESV}
+    # healthcheck:
+    #   test:
+    #     [
+    #       "CMD-SHELL",
+    #       "curl --cacert /usr/share/kibana/config/certs/ca/ca.crt -s -I http://localhost:8220 | grep -q 'HTTP/2 302'",
+    #     ]
+      interval: 10s
+      timeout: 10s
+      retries: 120
