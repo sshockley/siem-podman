@@ -19,7 +19,14 @@
         "ENCRYPTEDSAVEDOBJECTS",
         "fleetdata",
         "apmserver",
-        "PUBLICBASEURL"
+        "PUBLICBASEURL",
+        "fullchain",
+        "privkey",
+        "quic",
+        "reuseport",
+        "ecdh",
+        "secp",
+        "chacha"
 
     ]
 }
